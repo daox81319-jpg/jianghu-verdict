@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://src/core/app_controller.gd" id="1_controller"]
+[ext_resource type="PackedScene" path="res://assets/models/judgment_hall.glb" id="2_hall"]
+[ext_resource type="PackedScene" path="res://scenes/game_ui.tscn" id="3_ui"]
+[ext_resource type="Script" path="res://src/core/ai_gateway.gd" id="4_gateway"]
+[ext_resource type="AudioStream" path="res://assets/audio/ui_select.wav" id="5_ui_audio"]
+[ext_resource type="AudioStream" path="res://assets/audio/evidence_pick.wav" id="6_evidence"]
+[ext_resource type="AudioStream" path="res://assets/audio/contradiction.wav" id="7_contradiction"]
+[ext_resource type="AudioStream" path="res://assets/audio/seal.wav" id="8_seal"]
+[ext_resource type="AudioStream" path="res://assets/audio/result_bell.wav" id="9_result"]
+[ext_resource type="AudioStream" path="res://assets/audio/rain_hall.wav" id="10_ambient"]
+
+[sub_resource type="Environment" id="Environment_main"]
+background_mode = 1
+background_color = Color(0.003, 0.004, 0.006, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.18, 0.22, 0.26, 1)
+ambient_light_energy = 0.35
+reflected_light_source = 2
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_controller")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_main")
+
+[node name="JudgmentHall" parent="." instance=ExtResource("2_hall")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.987688, 0.156434, 0, -0.156434, 0.987688, 0, 4.2, 15.5)
+current = true
+fov = 44.0
+near = 0.05
+
+[node name="ColdKey" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-48, -24, 0)
+light_color = Color(0.58, 0.7, 0.84, 1)
+light_energy = 0.65
+shadow_enabled = true
+
+[node name="WarmRim" type="OmniLight3D" parent="."]
+position = Vector3(-4.5, 4.2, -5.5)
+light_color = Color(1, 0.45, 0.12, 1)
+light_energy = 5.0
+omni_range = 10.0
+shadow_enabled = true
+
+[node name="FaceKey" type="SpotLight3D" parent="."]
+position = Vector3(3.5, 5.0, 5.0)
+rotation_degrees = Vector3(-30, 28, 0)
+light_color = Color(1, 0.75, 0.5, 1)
+light_energy = 8.0
+spot_range = 18.0
+spot_angle = 38.0
+shadow_enabled = true
+
+[node name="AiGateway" type="Node" parent="."]
+script = ExtResource("4_gateway")
+
+[node name="GameUI" parent="." instance=ExtResource("3_ui")]
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="UISelect" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_ui_audio")
+volume_db = -7.0
+
+[node name="Evidence" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_evidence")
+volume_db = -5.0
+
+[node name="Contradiction" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_contradiction")
+volume_db = -3.0
+
+[node name="Seal" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_seal")
+volume_db = -2.0
+
+[node name="Result" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("9_result")
+volume_db = -4.0
+
+[node name="Ambient" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("10_ambient")
+volume_db = -13.0

@@ -1,0 +1,6 @@
+.DS_Store
+dist/
+game/.godot/
+artifacts/test_home/
+*.blend1
+*.tmp

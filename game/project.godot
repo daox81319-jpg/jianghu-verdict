@@ -1,0 +1,57 @@
+; Engine configuration file.
+
+config_version=5
+
+[application]
+
+config/name="江湖裁决"
+config/description="证据、证词与后果构成的江湖政治裁决游戏"
+config/version="1.0.0"
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon.png"
+
+[autoload]
+
+GameState="*res://src/autoload/game_state.gd"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
+[gui]
+
+theme/custom="res://ui_theme.tres"
+
+[input]
+
+quick_evidence_1={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":49), Object(InputEventJoypadButton,"button_index":0)]
+}
+quick_evidence_2={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":50), Object(InputEventJoypadButton,"button_index":2)]
+}
+quick_evidence_3={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":51), Object(InputEventJoypadButton,"button_index":3)]
+}
+restart_case={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":82), Object(InputEventJoypadButton,"button_index":12)]
+}
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+
+[audio]
+
+driver/enable_input=false

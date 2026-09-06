@@ -1,0 +1,882 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/images/main_kv.jpg" id="1_kv"]
+
+[sub_resource type="StyleBoxFlat" id="PanelDark"]
+bg_color = Color(0.018, 0.016, 0.014, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.46, 0.34, 0.14, 0.82)
+content_margin_left = 22.0
+content_margin_top = 18.0
+content_margin_right = 22.0
+content_margin_bottom = 18.0
+
+[sub_resource type="StyleBoxFlat" id="ButtonNormal"]
+bg_color = Color(0.025, 0.022, 0.019, 0.95)
+border_width_left = 3
+border_color = Color(0.22, 0.18, 0.1, 1)
+content_margin_left = 18.0
+content_margin_top = 12.0
+content_margin_right = 18.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="ButtonHover"]
+bg_color = Color(0.12, 0.085, 0.035, 0.98)
+border_width_left = 4
+border_color = Color(0.72, 0.5, 0.17, 1)
+content_margin_left = 18.0
+content_margin_top = 12.0
+content_margin_right = 18.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="ButtonPressed"]
+bg_color = Color(0.28, 0.025, 0.018, 0.98)
+border_width_left = 4
+border_color = Color(0.78, 0.12, 0.055, 1)
+content_margin_left = 18.0
+content_margin_top = 12.0
+content_margin_right = 18.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="ButtonDisabled"]
+bg_color = Color(0.018, 0.017, 0.016, 0.78)
+border_width_left = 2
+border_color = Color(0.18, 0.15, 0.1, 0.72)
+content_margin_left = 18.0
+content_margin_top = 12.0
+content_margin_right = 18.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="PaperPanel"]
+bg_color = Color(0.62, 0.51, 0.33, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.24, 0.15, 0.06, 1)
+content_margin_left = 24.0
+content_margin_top = 20.0
+content_margin_right = 24.0
+content_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxFlat" id="WaxButton"]
+bg_color = Color(0.38, 0.025, 0.018, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.78, 0.35, 0.16, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 22.0
+content_margin_top = 14.0
+content_margin_right = 22.0
+content_margin_bottom = 14.0
+
+[sub_resource type="StyleBoxFlat" id="TopBar"]
+bg_color = Color(0.008, 0.009, 0.01, 0.88)
+border_width_bottom = 1
+border_color = Color(0.43, 0.31, 0.12, 0.7)
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxLine" id="GoldLine"]
+color = Color(0.72, 0.5, 0.17, 1)
+thickness = 2
+
+[node name="GameUI" type="CanvasLayer"]
+
+[node name="TitleScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Backdrop" type="TextureRect" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("1_kv")
+expand_mode = 1
+stretch_mode = 6
+mouse_filter = 2
+
+[node name="Shade" type="ColorRect" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.005, 0.005, 0.006, 0.56)
+mouse_filter = 2
+
+[node name="Brand" type="VBoxContainer" parent="TitleScreen"]
+offset_left = 74.0
+offset_top = 74.0
+offset_right = 690.0
+offset_bottom = 390.0
+theme_override_constants/separation = 5
+
+[node name="Kicker" type="Label" parent="TitleScreen/Brand"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.54, 0.18, 1)
+theme_override_font_sizes/font_size = 16
+text = "一纸判词  ·  八方江湖"
+
+[node name="Title" type="Label" parent="TitleScreen/Brand"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.89, 0.76, 1)
+theme_override_font_sizes/font_size = 68
+text = "江湖裁决"
+
+[node name="Rule" type="Label" parent="TitleScreen/Brand"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.84, 0.84, 1)
+theme_override_font_sizes/font_size = 20
+text = "选证据 · 破证词 · 落判印"
+
+[node name="Line" type="HSeparator" parent="TitleScreen/Brand"]
+custom_minimum_size = Vector2(480, 2)
+layout_mode = 2
+theme_override_styles/separator = SubResource("GoldLine")
+
+[node name="Menu" type="VBoxContainer" parent="TitleScreen"]
+offset_left = 76.0
+offset_top = 430.0
+offset_right = 410.0
+offset_bottom = 790.0
+theme_override_constants/separation = 8
+
+[node name="Continue" type="Button" parent="TitleScreen/Menu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+text = "继续审案"
+alignment = 0
+
+[node name="NewGame" type="Button" parent="TitleScreen/Menu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+text = "新任令主"
+alignment = 0
+
+[node name="Cases" type="Button" parent="TitleScreen/Menu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+text = "案件卷宗"
+alignment = 0
+
+[node name="Settings" type="Button" parent="TitleScreen/Menu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+text = "设置"
+alignment = 0
+
+[node name="Quit" type="Button" parent="TitleScreen/Menu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+text = "离堂"
+alignment = 0
+
+[node name="BriefScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Shade" type="ColorRect" parent="BriefScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.008, 0.008, 0.009, 0.68)
+
+[node name="Portrait" type="TextureRect" parent="BriefScreen"]
+visible = false
+offset_left = 940.0
+offset_top = 0.0
+offset_right = 1600.0
+offset_bottom = 900.0
+expand_mode = 1
+stretch_mode = 6
+modulate = Color(0.62, 0.62, 0.62, 1)
+
+[node name="Content" type="VBoxContainer" parent="BriefScreen"]
+offset_left = 130.0
+offset_top = 125.0
+offset_right = 990.0
+offset_bottom = 760.0
+theme_override_constants/separation = 18
+
+[node name="Chapter" type="Label" parent="BriefScreen/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.77, 0.52, 0.17, 1)
+theme_override_font_sizes/font_size = 18
+text = "第一案"
+
+[node name="Title" type="Label" parent="BriefScreen/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.89, 0.76, 1)
+theme_override_font_sizes/font_size = 50
+text = "雨夜失踪"
+
+[node name="Kicker" type="Label" parent="BriefScreen/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.71, 0.72, 1)
+theme_override_font_sizes/font_size = 20
+text = "刀客门 / 商队失踪案"
+
+[node name="Summary" type="Label" parent="BriefScreen/Content"]
+custom_minimum_size = Vector2(760, 130)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.84, 0.84, 0.8, 1)
+theme_override_font_sizes/font_size = 22
+text = "案件摘要"
+autowrap_mode = 2
+
+[node name="Rule" type="Label" parent="BriefScreen/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.7, 0.28, 1)
+theme_override_font_sizes/font_size = 24
+text = "先选证据，再点击矛盾证词。"
+
+[node name="Begin" type="Button" parent="BriefScreen/Content"]
+custom_minimum_size = Vector2(320, 58)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("WaxButton")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+text = "升堂"
+
+[node name="Hearing" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TopBar" type="PanelContainer" parent="Hearing"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("TopBar")
+
+[node name="Row" type="HBoxContainer" parent="Hearing/TopBar"]
+layout_mode = 2
+
+[node name="CaseTitle" type="Label" parent="Hearing/TopBar/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.94, 0.89, 0.76, 1)
+theme_override_font_sizes/font_size = 20
+text = "第一案 · 雨夜失踪"
+
+[node name="Reputation" type="Label" parent="Hearing/TopBar/Row"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.72, 0.7, 1)
+theme_override_font_sizes/font_size = 15
+text = "公信 0  ·  威慑 0  ·  仁德 0  ·  腐化 0"
+
+[node name="GuidanceBackdrop" type="ColorRect" parent="Hearing"]
+offset_left = 420.0
+offset_top = 76.0
+offset_right = 1140.0
+offset_bottom = 182.0
+color = Color(0.008, 0.007, 0.006, 0.82)
+mouse_filter = 2
+
+[node name="Instruction" type="Label" parent="Hearing"]
+offset_left = 450.0
+offset_top = 82.0
+offset_right = 1150.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(0.98, 0.72, 0.28, 1)
+theme_override_font_sizes/font_size = 23
+text = "① 选择证据    ② 点击矛盾证词"
+horizontal_alignment = 1
+
+[node name="Feedback" type="Label" parent="Hearing"]
+offset_left = 470.0
+offset_top = 135.0
+offset_right = 1130.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0.88, 0.88, 0.84, 1)
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+
+[node name="EvidencePanel" type="PanelContainer" parent="Hearing"]
+offset_left = 24.0
+offset_top = 102.0
+offset_right = 392.0
+offset_bottom = 812.0
+theme_override_styles/panel = SubResource("PanelDark")
+
+[node name="Content" type="VBoxContainer" parent="Hearing/EvidencePanel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Hearing/EvidencePanel/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.54, 0.18, 1)
+theme_override_font_sizes/font_size = 24
+text = "证物"
+
+[node name="Detail" type="Label" parent="Hearing/EvidencePanel/Content"]
+custom_minimum_size = Vector2(300, 120)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74, 0.75, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+text = "选择一件证物查看细节。"
+autowrap_mode = 2
+
+[node name="Evidence1" type="Button" parent="Hearing/EvidencePanel/Content"]
+layout_mode = 2
+toggle_mode = true
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+text = "证物一"
+alignment = 0
+
+[node name="Evidence2" type="Button" parent="Hearing/EvidencePanel/Content"]
+layout_mode = 2
+toggle_mode = true
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+text = "证物二"
+alignment = 0
+
+[node name="Evidence3" type="Button" parent="Hearing/EvidencePanel/Content"]
+layout_mode = 2
+toggle_mode = true
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+text = "证物三"
+alignment = 0
+
+[node name="ClaimsPanel" type="PanelContainer" parent="Hearing"]
+offset_left = 1168.0
+offset_top = 102.0
+offset_right = 1576.0
+offset_bottom = 812.0
+theme_override_styles/panel = SubResource("PanelDark")
+
+[node name="Content" type="VBoxContainer" parent="Hearing/ClaimsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Hearing/ClaimsPanel/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.54, 0.18, 1)
+theme_override_font_sizes/font_size = 24
+text = "证词"
+
+[node name="Hint" type="Label" parent="Hearing/ClaimsPanel/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.72, 0.72, 1)
+theme_override_font_sizes/font_size = 15
+text = "点击与你所选证据冲突的一句。"
+autowrap_mode = 2
+
+[node name="Claim1" type="Button" parent="Hearing/ClaimsPanel/Content"]
+custom_minimum_size = Vector2(340, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+text = "证词一"
+alignment = 0
+autowrap_mode = 2
+
+[node name="Claim2" type="Button" parent="Hearing/ClaimsPanel/Content"]
+custom_minimum_size = Vector2(340, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+text = "证词二"
+alignment = 0
+autowrap_mode = 2
+
+[node name="Claim3" type="Button" parent="Hearing/ClaimsPanel/Content"]
+custom_minimum_size = Vector2(340, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+text = "证词三"
+alignment = 0
+autowrap_mode = 2
+
+[node name="Subtitle" type="PanelContainer" parent="Hearing"]
+offset_left = 420.0
+offset_top = 590.0
+offset_right = 1140.0
+offset_bottom = 812.0
+theme_override_styles/panel = SubResource("PanelDark")
+
+[node name="Content" type="VBoxContainer" parent="Hearing/Subtitle"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="NpcName" type="Label" parent="Hearing/Subtitle/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.54, 0.18, 1)
+theme_override_font_sizes/font_size = 23
+text = "岳沉锋"
+
+[node name="NpcRole" type="Label" parent="Hearing/Subtitle/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.58, 0.59, 1)
+theme_override_font_sizes/font_size = 14
+text = "刀客门执令"
+
+[node name="NpcText" type="Label" parent="Hearing/Subtitle/Content"]
+custom_minimum_size = Vector2(640, 90)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.87, 0.82, 1)
+theme_override_font_sizes/font_size = 19
+text = "陈述"
+autowrap_mode = 2
+
+[node name="VerdictReady" type="Button" parent="Hearing"]
+visible = false
+offset_left = 680.0
+offset_top = 830.0
+offset_right = 920.0
+offset_bottom = 888.0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("WaxButton")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+text = "证据链成立 · 落印"
+
+[node name="VerdictScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Shade" type="ColorRect" parent="VerdictScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.008, 0.006, 0.005, 0.92)
+
+[node name="Content" type="VBoxContainer" parent="VerdictScreen"]
+offset_left = 260.0
+offset_top = 90.0
+offset_right = 1340.0
+offset_bottom = 830.0
+theme_override_constants/separation = 14
+
+[node name="Kicker" type="Label" parent="VerdictScreen/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.77, 0.52, 0.17, 1)
+theme_override_font_sizes/font_size = 17
+text = "裁决"
+
+[node name="Title" type="Label" parent="VerdictScreen/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.89, 0.76, 1)
+theme_override_font_sizes/font_size = 42
+text = "选择判词"
+
+[node name="Prompt" type="Label" parent="VerdictScreen/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.72, 0.72, 1)
+theme_override_font_sizes/font_size = 18
+text = "裁决没有唯一正确答案，但每一项都会留下后果。"
+
+[node name="Verdict1" type="Button" parent="VerdictScreen/Content"]
+custom_minimum_size = Vector2(940, 78)
+layout_mode = 2
+toggle_mode = true
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+text = "裁决一"
+alignment = 0
+
+[node name="Verdict2" type="Button" parent="VerdictScreen/Content"]
+custom_minimum_size = Vector2(940, 78)
+layout_mode = 2
+toggle_mode = true
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+text = "裁决二"
+alignment = 0
+
+[node name="Verdict3" type="Button" parent="VerdictScreen/Content"]
+custom_minimum_size = Vector2(940, 78)
+layout_mode = 2
+toggle_mode = true
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+theme_override_styles/pressed = SubResource("ButtonPressed")
+text = "裁决三"
+alignment = 0
+
+[node name="ChoiceDetail" type="Label" parent="VerdictScreen/Content"]
+custom_minimum_size = Vector2(940, 86)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.79, 0.7, 1)
+theme_override_font_sizes/font_size = 18
+text = "先选择一项判词。"
+autowrap_mode = 2
+
+[node name="Confirm" type="Button" parent="VerdictScreen/Content"]
+visible = false
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("WaxButton")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+text = "确认落印"
+
+[node name="ResultScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Shade" type="ColorRect" parent="ResultScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.008, 0.006, 0.005, 0.92)
+
+[node name="Content" type="VBoxContainer" parent="ResultScreen"]
+offset_left = 310.0
+offset_top = 150.0
+offset_right = 1290.0
+offset_bottom = 780.0
+theme_override_constants/separation = 20
+
+[node name="Kicker" type="Label" parent="ResultScreen/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.77, 0.52, 0.17, 1)
+theme_override_font_sizes/font_size = 18
+text = "江湖回响"
+
+[node name="Title" type="Label" parent="ResultScreen/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.89, 0.76, 1)
+theme_override_font_sizes/font_size = 45
+text = "判词已落"
+
+[node name="Body" type="Label" parent="ResultScreen/Content"]
+custom_minimum_size = Vector2(900, 180)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.84, 0.83, 0.78, 1)
+theme_override_font_sizes/font_size = 22
+text = "结果"
+autowrap_mode = 2
+
+[node name="Reputation" type="Label" parent="ResultScreen/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93, 0.68, 0.25, 1)
+theme_override_font_sizes/font_size = 20
+text = "公信 +0 · 威慑 +0 · 仁德 +0 · 腐化 +0"
+
+[node name="Continue" type="Button" parent="ResultScreen/Content"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("WaxButton")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+text = "下一案"
+
+[node name="EndingScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Shade" type="ColorRect" parent="EndingScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.004, 0.004, 0.005, 0.96)
+
+[node name="Content" type="VBoxContainer" parent="EndingScreen"]
+offset_left = 240.0
+offset_top = 160.0
+offset_right = 1360.0
+offset_bottom = 780.0
+theme_override_constants/separation = 20
+
+[node name="Kicker" type="Label" parent="EndingScreen/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.77, 0.52, 0.17, 1)
+theme_override_font_sizes/font_size = 18
+text = "终局"
+
+[node name="Title" type="Label" parent="EndingScreen/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.89, 0.76, 1)
+theme_override_font_sizes/font_size = 52
+text = "破局者"
+
+[node name="Body" type="Label" parent="EndingScreen/Content"]
+custom_minimum_size = Vector2(1040, 230)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.82, 0.78, 1)
+theme_override_font_sizes/font_size = 23
+text = "终局文本"
+autowrap_mode = 2
+
+[node name="Stats" type="Label" parent="EndingScreen/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93, 0.68, 0.25, 1)
+theme_override_font_sizes/font_size = 19
+text = "公信 0 · 威慑 0 · 仁德 0 · 腐化 0"
+
+[node name="TitleButton" type="Button" parent="EndingScreen/Content"]
+custom_minimum_size = Vector2(300, 58)
+layout_mode = 2
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+text = "返回题签"
+
+[node name="CaseSelectScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Shade" type="ColorRect" parent="CaseSelectScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.006, 0.006, 0.007, 0.94)
+
+[node name="Content" type="VBoxContainer" parent="CaseSelectScreen"]
+offset_left = 330.0
+offset_top = 120.0
+offset_right = 1270.0
+offset_bottom = 790.0
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="CaseSelectScreen/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "案件卷宗"
+
+[node name="Case1" type="Button" parent="CaseSelectScreen/Content"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+text = "第一案"
+
+[node name="Case2" type="Button" parent="CaseSelectScreen/Content"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.48, 0.47, 0.43, 1)
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+theme_override_styles/disabled = SubResource("ButtonDisabled")
+text = "第二案"
+
+[node name="Case3" type="Button" parent="CaseSelectScreen/Content"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.48, 0.47, 0.43, 1)
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+theme_override_styles/disabled = SubResource("ButtonDisabled")
+text = "第三案"
+
+[node name="Case4" type="Button" parent="CaseSelectScreen/Content"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.48, 0.47, 0.43, 1)
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+theme_override_styles/disabled = SubResource("ButtonDisabled")
+text = "终案"
+
+[node name="Back" type="Button" parent="CaseSelectScreen/Content"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+text = "返回"
+
+[node name="SettingsScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Shade" type="ColorRect" parent="SettingsScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.006, 0.006, 0.007, 0.94)
+
+[node name="Panel" type="PanelContainer" parent="SettingsScreen"]
+offset_left = 490.0
+offset_top = 190.0
+offset_right = 1110.0
+offset_bottom = 710.0
+theme_override_styles/panel = SubResource("PanelDark")
+
+[node name="Content" type="VBoxContainer" parent="SettingsScreen/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="SettingsScreen/Panel/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "设置"
+
+[node name="VolumeLabel" type="Label" parent="SettingsScreen/Panel/Content"]
+layout_mode = 2
+text = "主音量"
+
+[node name="Volume" type="HSlider" parent="SettingsScreen/Panel/Content"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 0.8
+
+[node name="ReducedMotion" type="CheckButton" parent="SettingsScreen/Panel/Content"]
+layout_mode = 2
+text = "减少镜头运动"
+
+[node name="LargeText" type="CheckButton" parent="SettingsScreen/Panel/Content"]
+layout_mode = 2
+text = "大字号"
+
+[node name="Guide" type="Label" parent="SettingsScreen/Panel/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.7, 0.7, 1)
+text = "鼠标 / 手柄均可完成全部流程\n数字键 1–3 可快速选择证据\nR 重新开始当前案件"
+
+[node name="Back" type="Button" parent="SettingsScreen/Panel/Content"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+text = "返回"
+
+[node name="PauseScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Shade" type="ColorRect" parent="PauseScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.004, 0.004, 0.005, 0.88)
+
+[node name="Content" type="VBoxContainer" parent="PauseScreen"]
+offset_left = 600.0
+offset_top = 260.0
+offset_right = 1000.0
+offset_bottom = 640.0
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="PauseScreen/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "暂退公堂"
+
+[node name="Resume" type="Button" parent="PauseScreen/Content"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+text = "继续"
+
+[node name="Restart" type="Button" parent="PauseScreen/Content"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+text = "重审本案"
+
+[node name="TitleButton" type="Button" parent="PauseScreen/Content"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("ButtonNormal")
+theme_override_styles/hover = SubResource("ButtonHover")
+theme_override_styles/focus = SubResource("ButtonHover")
+text = "返回题签"
+
+[node name="Transition" type="ColorRect" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.005, 0.004, 0.004, 1)
+mouse_filter = 2
